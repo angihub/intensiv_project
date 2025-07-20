@@ -49,7 +49,7 @@ input{
     background-color: rgba(0, 0, 0, 0);
 }
 
-#logo{
+#jacquard24{
     height: 30px;
     margin-left: auto;
     margin-right: auto;
@@ -60,6 +60,12 @@ video{
     display: flex;
     width: 100%;
     height: 90vh;
-    object-fit: cover;
+    object-fit:cover;
+    border-radius: 400px;
 }
 
+.card{
+    display: flex;
+    max-width: 100%;
+    height: 250px;
+}
