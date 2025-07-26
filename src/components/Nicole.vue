@@ -1,4 +1,39 @@
 <script setup>
+    import { reactive } from 'vue';
+    const products = reactive([
+    {
+        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        name: "Cream Kelly Twins Bag",
+        cost: "999$"
+    },
+    {
+        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        name: "Cream Kelly Twins Bag",
+        cost: "999$"
+    },
+    {
+        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        name: "Cream Kelly Twins Bag",
+        cost: "999$"
+    },
+    {
+        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        name: "Cream Kelly Twins Bag",
+        cost: "999$"
+    },
+    {
+        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        name: "Cream Kelly Twins Bag",
+        cost: "999$"
+    },
+    {
+        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        name: "Cream Kelly Twins Bag",
+        cost: "999$"
+    },
+    
+])
+        
 
 </script>
 <template>
@@ -17,7 +52,7 @@
         <nav class="nav-right">
         <ul>
             <li><input type="text" placeholder="  Search..." style="height: 25px; border-radius: 30px;"/></li>
-            <li><img href="#about" src="/src/assets/header/Search_Magnifying_Glass.svg"  alt="Search" /></li>
+            <li><img href="#" src="/src/assets/header/Search_Magnifying_Glass.svg"  alt="Search" /></li>
             <li><img src="/src/assets/header/User_Card_ID.svg" alt="My account" /></li>
             <li><img src="/src/assets/header/Shopping_Cart_02.svg" alt="Shopping cart" /></li>
         </ul>
@@ -31,24 +66,27 @@
         Your browser does not support the video tag.
       </video>
       <div class="banner-overlay">
-        <p class="promo-text">Promo Text Here</p>
+        <p class="promo-text">Welcome to the</p>
         <img src="/src/assets/svg/N.svg" alt="Promo Icon" class="promo-icon" />
       </div>
       </section>
       <section id="catalog" class="catalog-section">
+        <section class="in-catalog-section">
         <a href="/collections/chasing-summer-25" class="collection-banner">
             <img src="/src/assets/svg/Chasing Summer ‘25.svg" alt="Chasing Summer ‘25" />
         </a>
         <div class="carousel">
             <div class="carousel-track">
             <div class="product-card" v-for="(product, index) in products" :key="index">
-                <img :src="product.img" class="product-image" :alt="product.name" />
+                <img :src="product.img" class="product-image" :alt="product.name" /><br/>
                 <p>{{ product.name }}</p>
+                <p>{{ product.cost }}</p>
             </div>
             </div>
             <button class="carousel-control prev">&#10094;</button>
             <button class="carousel-control next">&#10095;</button>
         </div>
+        </section>
         <a href="/collections/chasing-summer-25" class="see-all">See full collection →</a>
       </section>
        
