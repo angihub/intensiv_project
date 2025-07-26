@@ -2,86 +2,83 @@
 
 </script>
 <template>
-    <header>
-        <nav>
-           <ul>
-               <li><a href="#">About</a></li>
-               <li><a href="#">Catalog</a></li>
-               <li><a href="#">Collections</a></li>
-               <li><a href="#">Stores</a></li>
-           </ul>
-       </nav>
-       <img id="jacquard24" src="/src/assets/svg/Nicole.svg" alt="Nicole">
-       <nav>
-           <ul>
-               <input type="text">
-               <img src="/src/assets/header/Search_Magnifying_Glass.svg" alt="Search">
-               <img src="/src/assets/header/User_Card_ID.svg" alt="My account">
-               <img src="/src/assets/header/Shopping_Cart_02.svg" alt="Shopping cart">
-           </ul>
-       </nav>
-    </header>
-    <br/>
-    <main>
-        <video autoplay muted loop playsinline>
-            <source src="/src/assets/mainpage/sea.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <nav>
-            <ul class="catalog">
-                <li>
-                    <img style="height: 160px; margin-top: 20px; margin-right: 50px;" 
-                    src="/src/assets/svg/Chasing Summer ‘25.svg" alt="Chasing Summer ‘25">
-                </li>
-                <li class="card">
-                    <img class="product" src="/src/assets/catalog/Cream Kelly Twins Bag.jfif">
-                    <p>Cream Kelly Twins Bag</p>
-                </li>
-                <li class="card">
-                    <img class="product" src="/src/assets/catalog/Harlee Embroidered Shoulder Bag - Pink.jfif">
-                    <p>Harlee Embroidered Shoulder Bag</p>
-                </li>
-                <li class="card">
-                    <img class="product" src="/src/assets/catalog/Harlee Sequin Shoulder Bag - Pink.jfif">
-                    <p>Harlee Sequin Shoulder Bag</p>
-                </li>
-            </ul>
+    <header class="site-header">
+        <nav class="nav-left">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#catalog">Catalog</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#stores">Stores</a></li>
+        </ul>
         </nav>
-
-
-        <video style="width: 25%; margin-right: 50px;" autoplay muted loop playsinline>
-            <source src="/src/assets/mainpage/mainpage.mp4" type="video/mp4">
+        <a href="#" class="logo-link">
+        <img class="logo" src="/src/assets/svg/Nicole.svg" alt="Nicole logo" />
+        </a>
+        <nav class="nav-right">
+        <ul>
+            <li><input type="text" placeholder="  Search..." style="height: 25px; border-radius: 30px;"/></li>
+            <li><img href="#about" src="/src/assets/header/Search_Magnifying_Glass.svg"  alt="Search" /></li>
+            <li><img src="/src/assets/header/User_Card_ID.svg" alt="My account" /></li>
+            <li><img src="/src/assets/header/Shopping_Cart_02.svg" alt="Shopping cart" /></li>
+        </ul>
+        </nav>
+    </header>
+    
+    <main>
+    <section class="banner">
+      <video class="banner-video" autoplay muted loop playsinline>
+        <source src="/src/assets/mainpage/swpool.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="banner-overlay">
+        <p class="promo-text">Promo Text Here</p>
+        <img src="/src/assets/svg/N.svg" alt="Promo Icon" class="promo-icon" />
+      </div>
+      </section>
+      <section id="catalog" class="catalog-section">
+        <a href="/collections/chasing-summer-25" class="collection-banner">
+            <img src="/src/assets/svg/Chasing Summer ‘25.svg" alt="Chasing Summer ‘25" />
+        </a>
+        <div class="carousel">
+            <div class="carousel-track">
+            <div class="product-card" v-for="(product, index) in products" :key="index">
+                <img :src="product.img" class="product-image" :alt="product.name" />
+                <p>{{ product.name }}</p>
+            </div>
+            </div>
+            <button class="carousel-control prev">&#10094;</button>
+            <button class="carousel-control next">&#10095;</button>
+        </div>
+        <a href="/collections/chasing-summer-25" class="see-all">See full collection →</a>
+      </section>
+       
+      <section>
+        <video class="promo-video" autoplay muted loop playsinline>
+            <source src="/src/assets/mainpage/mainpage.mp4" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
-        
-    </main>
-    
-    <br/><footer>
-        <div><strong>About us</strong><br/>
-            Nicole is a luxury brand of clothing, footwear and accessories. 
-            We are proud of the quality of our materials, the comfort of our products. 
+      </section>
+    </main>  
+
+    <footer class="site-footer">
+        <div class="footer-about">
+            <strong>About us</strong><br />
+            Nicole is a luxury brand of clothing, footwear and accessories.
+            We are proud of the quality of our materials, the comfort of our products.
             Nicole keeps up with the times, while maintaining quality and individuality.
-        </div>
-        <div><strong>Contact us</strong><br/>
-            <a href="" rel="noopener noreferrer" 
-            target="_blank"><i color="#000">
-                <img class="socials" width="30" height="30" 
-                    viewBox="0 0 20 18" fill="none" src="/src/assets/svg/telegram.svg">
-                </img></i>
+            </div><br />
+            <div class="footer-contact">
+            <strong>Contact us</strong><br />
+            <a href="#" target="_blank" rel="noopener">
+                <img class="social-icon" src="/src/assets/svg/telegram.svg" alt="Telegram" />
             </a>
-            <a href="" rel="noopener noreferrer" 
-            target="_blank"><i color="#000">
-                <img class="socials" width="30" height="30" 
-                    viewBox="0 0 20 18" fill="none" src="/src/assets/svg/instagram.svg">
-                </img></i>
+            <a href="#" target="_blank" rel="noopener">
+                <img class="social-icon" src="/src/assets/svg/instagram.svg" alt="Instagram" />
             </a>
-            <a href="" rel="noopener noreferrer" 
-            target="_blank"><i color="#000">
-                <img class="socials" width="30" height="30" 
-                    viewBox="0 0 30 30" fill="none" src="/src/assets/svg/gmail.svg">
-                </img></i>
-            </a>
-        </div>
-        <div>© Nicole | 2025 | All rights reserved</div>
-    </footer>
+            <a href="#" target="_blank" rel="noopener">
+                <img class="social-icon" src="/src/assets/svg/gmail.svg" alt="Gmail" />
+        </a>
+            </div><br />
+            <div class="footer-copy">© Nicole | 2025 | All rights reserved</div>
+        </footer>
 </template>
