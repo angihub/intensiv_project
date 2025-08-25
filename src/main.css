@@ -7,34 +7,6 @@
   padding: 0;
 }
 
-.site-header {
-  display: flex;    
-  color: #ffffff;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 50px;
-  height: 10vh;
-  background-color: #000;
-}
-.nav-left ul,
-.nav-right ul {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  cursor: pointer;
-}
-
-.nav-left ul li :hover {
-  color:rgb(127, 127, 127);
-}
-.nav-right ul li :hover {
-  color:rgb(127, 127, 127);
-}
-
-.nav-left ul li a{
-  color: #ffffff;
-  text-decoration: none;
-}
 .logo {
   height: 30px;
 }
@@ -54,14 +26,14 @@
 
 .promo-video {
   width: 25%; 
-  margin: 10px;
+  margin: 50px;
   border-radius: 350px;
 }
 
 .banner-overlay {
   position: absolute;
-  top: 20%;
-  left: 10%;
+  top: 40%;
+  left: 20%;
   color: white;
 }
 
@@ -73,8 +45,8 @@
 }
 .collection-banner img {
   height: 160px;
-  margin-top: 20px;
-  margin-right: 50px;
+  margin-top: 30px;
+  margin-right: 120px;
 }
 .carousel {
   position: relative;
@@ -122,17 +94,66 @@ p{
   z-index: 10;
 }
 .carousel-control.prev {
-  left: 0px;
+  left: -50px;
   background-color: #00000000;
   color: #0000005c;
   font-size: 50px;
 }
 .carousel-control.next {
-  right: 0px;
+  right: -25px;
   background-color: #00000000;
   color: #0000005c;
   font-size: 50px;
 }
+
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 77%;
+}
+
+.carousel {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 100%;
+}
+
+.product-image {
+  width: 100%;
+  height: 250px;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+.carousel-control {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0 15px;
+  z-index: 10;
+  color: #000;
+  transition: color 0.3s;
+}
+
+.carousel-control:hover {
+  color: #555;
+}
+
+.carousel-control.prev {
+  margin-right: 10px;
+}
+
+.carousel-control.next {
+  margin-left: 10px;
+}
+
 .see-all {
   display: block;
   text-align: right;
@@ -141,33 +162,3 @@ p{
   color: #000;
 }
 
-footer{
-    background-color: rgba(0, 0, 0);
-    display: flex;
-    flex-direction: column;
-    height: 30vh;
-    padding: 50px;
-    margin: 0;
-    margin-top: auto;
-    justify-content: space-between;
-    color: #ffffff;
-}
-
-.socials{
-    padding-top: 10px;
-    padding-right: 10px;
-}
-
-.site-footer {
-  background-color: #000;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  padding: 50px;
-  height: 30vh;
-}
-.social-icon {
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-}
