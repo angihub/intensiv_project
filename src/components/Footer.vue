@@ -33,6 +33,7 @@
         margin-top: auto;
         justify-content: space-between;
         color: #ffffff;
+        
     }
 
     .socials{
@@ -41,17 +42,22 @@
     }
 
     .site-footer {
-    background-color: #000;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    padding: 50px;
-    height: 30vh;
+        background-color: #000;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 50px;
+        height: 40vh;
     }
     .social-icon {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+        margin-top: 10px;
     }
+    .social-icon:hover{
+        filter: brightness(0.35);
+    }
+
 
 </style>

@@ -6,28 +6,29 @@
     <main>
         <h4>Addresses of our stores</h4><br/>
         <div style="display: flex; justify-content: center; gap: 40px;">
-            <div class="address">
+            <a style="text-decoration: none;" class="address" target="_blank" href="https://yandex.ru/maps/-/CLAjAKjN"><div>
                 <img class="address-image" src="/src/assets/mainpage/icons8-pixel-50 (1).png"></img>
 
                 <h4>Kaskad Shopping Center </h4> 
                 <p>Address: 20 Prezidentsky Boulevard, Cheboksary, Chuvash Republic</p>
                 <p>Mon-Sat: 10:00-21:00 <br/>
                     Sun: 10:00-20:00</p>
-            </div>
-            <div class="address">
+            </div></a>
+            <a style="text-decoration: none;" class="address" target="_blank" href="https://yandex.ru/maps/-/CLAjA468"><div>
                 <img class="address-image" src="/src/assets/mainpage/icons8-pixel-50 (1).png"></img>
                 <h4>Madagascar Shopping Center</h4>
                 <p>Address: 21A Leninskogo Komsomola Street, Cheboksary, Chuvash Republic</p>
                 <p>Mon-Sat: 10:00-21:00 <br/>
                     Sun: 10:00-20:00</p>
-            </div>
-            <div class="address">
+            </div></a>
+            <a style="text-decoration: none;" class="address" target="_blank" href="https://yandex.ru/maps/-/CLAfr60D"><div>
                 <img class="address-image" src="/src/assets/mainpage/icons8-pixel-50 (1).png"></img>
                 <h4>Volzhsky Shopping Center</h4>
                 <p>Address: 10 Maksim Gorky Avenue, Building 1, Cheboksary, Chuvash Republic</p>
                 <p>Mon-Sat: 10:00-21:00 <br/>
                     Sun: 10:00-20:00</p>
-            </div>
+            </div></a>
+            
             </div>
         <br/>
         

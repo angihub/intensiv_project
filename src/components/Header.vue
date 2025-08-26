@@ -14,9 +14,9 @@
         <nav class="nav-right">
         <ul>
             <li><input type="text" placeholder="  Search..." style="height: 25px; border-radius: 30px; border: 0;"/></li>
-            <li><img href="#" src="/src/assets/header/Search_Magnifying_Glass.svg"  alt="Search" /></li>
-            <li><img src="/src/assets/header/User_Card_ID.svg" alt="My account" /></li>
-            <li><img src="/src/assets/header/Shopping_Cart_02.svg" alt="Shopping cart" /></li>
+            <li><img href="#" src="/src/assets/header/Search_Magnifying_Glass.svg" alt="Search" /></li>
+            <li><a href="/profile"><img src="/src/assets/header/User_Card_ID.svg" alt="My account" /></a></li>
+            <li><a href="/cart"><img src="/src/assets/header/Shopping_Cart_02.svg" alt="Shopping cart" /></a></li>
         </ul>
         </nav>
     </header>
@@ -52,8 +52,8 @@
     .nav-left ul li :hover {
     color:rgb(127, 127, 127);
     }
-    .nav-right ul li :hover {
-    filter:brightness(0.35)
+    .nav-right ul li img:hover {
+    filter:brightness(0.3)
     }
     .nav-left ul li a{
     color: #ffffff;

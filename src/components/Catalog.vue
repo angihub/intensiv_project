@@ -1,8 +1,18 @@
 <template>
   <div class="catalog-page">
-
     <main>
       <section class="catalog-filters">
+        <!-- Секция сортировки -->
+        <div class="sort-section">
+          <h4>Sort</h4>
+          <select v-model="sortOption">
+            <option value="popularity">By popularity</option>
+            <option value="price-asc">By price: low to high</option>
+            <option value="price-desc">By price: high to low</option>
+          </select>
+        </div>
+
+        <!-- Секция категорий -->
         <div class="filter-section">
           <h4>Categories</h4>
           <ul>
@@ -15,24 +25,25 @@
           </ul>
         </div>
 
+        <!-- Секция ценового диапазона -->
         <div class="filter-section">
           <h4>Price</h4>
           <span>Up to </span>
-          <input type="text" v-model="priceRange" min="0" max="1000" style="width: 25%; border-radius: 30px; height: 25px;"> </br>
+          <input type="text" v-model="priceRange" min="0" max="10000" style="width: 25%; border-radius: 30px; height: 25px;">
         </div>
       </section>
 
+      <!-- Секция продуктов -->
       <section class="products-grid">
         <div 
           class="product-card" 
-          v-for="product in filteredProducts" 
+          v-for="product in sortedProducts" 
           :key="product.id"
           @click="goToProduct(product.id)"
         >
-          <img :src="product.img" :alt="product.name" class="product-image">
-          <br>
+          <img :src="product.img ? product.img : '/catalog/default.png'" :alt="product.name" class="product-image">
           <p>{{ product.name }}</p>
-          <p class="price">{{ product.cost }}</p>
+          <p class="price">{{ product.price }}₽</p>
           <button class="add-to-cart" @click.stop="addToCart(product)">Add to cart</button>
         </div>
       </section>
@@ -41,84 +52,86 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
+import axios from 'axios';
 
+// Настройки роутера
 const router = useRouter();
 
-const allProducts = ref([
-  {
-    id: 1,
-    img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
-    name: "Cream Kelly Twins Bag",
-    cost: "999$",
-    category: "Bags"
-  },
-  {
-    id: 2,
-    img: "/src/assets/catalog/Harlee Embroidered Shoulder Bag - Pink.jfif",
-    name: "Harlee Embroidered Bag",
-    cost: "777$",
-    category: "Bags"
-  },
-  {
-    id: 3,
-    img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
-    name: "Cream Kelly Twins Bag 2",
-    cost: "999$",
-    category: "Bags"
-  },
-  {
-    id: 4,
-    img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
-    name: "Cream Kelly Twins Bag 3",
-    cost: "99$",
-    category: "Bags"
-  },
-  {
-    id: 5,
-    img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
-    name: "Cream Kelly Twins Bag",
-    cost: "999$",
-    category: "Bags"
-  },
-  {
-    id: 6,
-    img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
-    name: "Cream Kelly Twins Bag 4",
-    cost: "909$",
-    category: "Bags"
-  },
-  
-]);
-
-const categories = ['Bags', 'Shoes', 'Accessories'];
+// Состояние
+const products = ref([]);
+const categories = ['clothes', 'shoes', 'accessories'];
 const selectedCategories = ref([]);
-const priceRange = ref(1000);
+const priceRange = ref(10000);
 
+// Сортировка
+const sortOption = ref('popularity');
+
+// Функция для сортировки товаров
+const sortedProducts = computed(() => {
+  let sortedList = [...filteredProducts.value];
+
+  if (sortOption.value === 'price-asc') {
+    sortedList.sort((a, b) => a.price - b.price);
+  } else if (sortOption.value === 'price-desc') {
+    sortedList.sort((a, b) => b.price - a.price);
+  } else if (sortOption.value === 'popularity') {
+    sortedList.sort((a, b) => b.popularity - a.popularity); // Нужно иметь поле popularity в данных
+  }
+
+  return sortedList;
+});
+
+// Загружаем продукты с сервера
+onMounted(async () => {
+  try {
+    const res = await axios.get('http://localhost:3000/api/products');
+    products.value = res.data;
+  } catch (error) {
+    console.error('Ошибка загрузки товаров:', error.message);
+    products.value = [];
+  }
+});
+
+// Фильтрация продуктов по категориям и цене
 const filteredProducts = computed(() => {
-  return allProducts.value.filter(product => {
-    const matchesCategory = selectedCategories.value.length === 0 || 
+  return products.value.filter(product => {
+    const matchesCategory = selectedCategories.value.length === 0 ||
       selectedCategories.value.includes(product.category);
-    const matchesPrice = parseInt(product.cost) <= priceRange.value;
+    const matchesPrice = Number(product.price) <= priceRange.value;
     return matchesCategory && matchesPrice;
   });
 });
 
+// Функция добавления товара в корзину
 function addToCart(product) {
   console.log('Added to cart:', product);
 }
 
+// Редирект на страницу товара
 function goToProduct(id) {
   router.push(`/product/${id}`);
 }
 </script>
 
 <style scoped>
+
 .catalog-page {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.sort-section{
+  margin-right: 50px;
+
+}
+
+.sort-section select{
+  border-radius: 30px;
+  height: 25px;
+  width: 150px;
 }
 
 .catalog-filters {
