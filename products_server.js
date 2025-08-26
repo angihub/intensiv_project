@@ -16,22 +16,22 @@ const pool = new Pool({
 });
 
 pool.connect((err) => {
-  if (err) {
-    console.error('Ошибка подключения к базе данных:', err.message);
-  } else {
-    console.log('Подключение к базе данных успешно');
-  }
+ if (err) {
+ console.error('Database connection error:', err.message);
+ } else {
+ console.log('Database connection successful');
+ }
 });
 
 app.get('/api/products', async (req, res) => {
-  try {
-    const result = await pool.query('SELECT * FROM products');
-    res.json(result.rows);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+ try {
+ const result = await pool.query('SELECT * FROM products');
+ res.json(result.rows);
+ } catch (err) {
+ res.status(500).json({ error: err.message });
+ }
 });
 
 app.listen(3000, () => {
-  console.log('Сервер запущен на http://localhost:3000');
+ console.log('Server running on http://localhost:3000');
 });
