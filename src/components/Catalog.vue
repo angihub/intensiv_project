@@ -2,7 +2,6 @@
   <div class="catalog-page">
     <main>
       <section class="catalog-filters">
-        <!-- Секция сортировки -->
         <div class="sort-section">
           <h4>Sort</h4>
           <select v-model="sortOption">
@@ -12,7 +11,6 @@
           </select>
         </div>
 
-        <!-- Секция категорий -->
         <div class="filter-section">
           <h4>Categories</h4>
           <ul>
@@ -25,7 +23,6 @@
           </ul>
         </div>
 
-        <!-- Секция ценового диапазона -->
         <div class="filter-section">
           <h4>Price</h4>
           <span>Up to </span>
@@ -33,7 +30,6 @@
         </div>
       </section>
 
-      <!-- Секция продуктов -->
       <section class="products-grid">
         <div 
           class="product-card" 
@@ -56,19 +52,13 @@ import { ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import axios from 'axios';
 
-// Настройки роутера
-const router = useRouter();
 
-// Состояние
+const router = useRouter();
 const products = ref([]);
 const categories = ['clothes', 'shoes', 'accessories'];
 const selectedCategories = ref([]);
 const priceRange = ref(10000);
-
-// Сортировка
 const sortOption = ref('popularity');
-
-// Функция для сортировки товаров
 const sortedProducts = computed(() => {
   let sortedList = [...filteredProducts.value];
 
@@ -83,7 +73,6 @@ const sortedProducts = computed(() => {
   return sortedList;
 });
 
-// Загружаем продукты с сервера
 onMounted(async () => {
   try {
     const res = await axios.get('http://localhost:3000/api/products');
@@ -94,7 +83,6 @@ onMounted(async () => {
   }
 });
 
-// Фильтрация продуктов по категориям и цене
 const filteredProducts = computed(() => {
   return products.value.filter(product => {
     const matchesCategory = selectedCategories.value.length === 0 ||
@@ -104,12 +92,10 @@ const filteredProducts = computed(() => {
   });
 });
 
-// Функция добавления товара в корзину
 function addToCart(product) {
   console.log('Added to cart:', product);
 }
 
-// Редирект на страницу товара
 function goToProduct(id) {
   router.push(`/product/${id}`);
 }

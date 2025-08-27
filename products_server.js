@@ -8,10 +8,10 @@ app.use(cors());
 app.use(express.json());
 
 const pool = new Pool({
-  user: 'postgres',         // твой логин postgres
+  user: 'postgres',         
   host: '127.0.0.1',
-  database: 'postgres',      // твоя база
-  password: 'tidurachok777',  // пароль от postgres
+  database: 'postgres',      
+  password: 'tidurachok777',  
   port: 5432,
 });
 
@@ -33,5 +33,4 @@ app.get('/api/products', async (req, res) => {
 });
 
 app.listen(3000, () => {
- console.log('Server running on http://localhost:3000');
-});
+ console.log('Server running on http://localhost:3000');});

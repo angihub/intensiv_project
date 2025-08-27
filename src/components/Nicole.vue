@@ -2,32 +2,32 @@
     import { reactive, ref } from 'vue';
     const products = reactive([
     {
-        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        img: "/public/catalog/Cream Kelly Twins Bag.jfif",
         name: "Cream Kelly Twins Bag",
         cost: "9$"
     },
     {
-        img: "/src/assets/catalog/Harlee Embroidered Shoulder Bag - Pink.jfif",
+        img: "/public/catalog/Harlee Embroidered Shoulder Bag - Pink.jfif",
         name: "Harlee Embroidered Shoulder Bag - Pink",
         cost: "777$"
     },
     {
-        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        img: "/public/catalog/Cream Kelly Twins Bag.jfif",
         name: "Cream Kelly Twins Bag 2",
         cost: "999$"
     },
     {
-        img: "/src/assets/catalog/Harlee Sequin Shoulder Bag - Pink.jfif",
+        img: "/public/catalog/Harlee Sequin Shoulder Bag - Pink.jfif",
         name: "Harlee Sequin Shoulder Bag - Pink",
         cost: "899$"
     },
     {
-        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        img: "/public/catalog/Cream Kelly Twins Bag.jfif",
         name: "Cream Kelly Twins Bag 3",
         cost: "99$"
     },
     {
-        img: "/src/assets/catalog/Cream Kelly Twins Bag.jfif",
+        img: "/public/catalog/Cream Kelly Twins Bag.jfif",
         name: "Cream Kelly Twins Bag 4",
         cost: "909$"
     },
@@ -35,7 +35,7 @@
 ])
         
 const currentSlide = ref(0);
-const visibleSlides = 4; // Количество видимых слайдов
+const visibleSlides = 4; 
 
 const nextSlide = () => {
   currentSlide.value = Math.min(currentSlide.value + 1, products.length - visibleSlides);

@@ -8,7 +8,7 @@ dotenv.config()
 
 const router = express.Router()
 
-// Регистрация
+
 router.post('/register', async (req, res) => {
   const { name, email, password } = req.body
 
@@ -35,7 +35,7 @@ router.post('/register', async (req, res) => {
   }
 })
 
-// Вход
+
 router.post('/login', async (req, res) => {
   const { email, password } = req.body
 
@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
   res.json({ token, user: { id: user.id, name: user.name, bonus: user.bonus } })
 })
 
-// Профиль
+
 router.get('/profile', async (req, res) => {
   const authHeader = req.headers.authorization
   if (!authHeader) return res.status(401).json({ error: 'Unauthorized' })
@@ -68,5 +68,17 @@ router.get('/profile', async (req, res) => {
     res.status(401).json({ error: 'Invalid token' })
   }
 })
+
+
+router.get('/users', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name, email FROM users');
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
 
 export default router
