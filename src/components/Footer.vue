@@ -23,6 +23,8 @@
 </template>
 
 <style scoped>
+    
+
     footer{
         background-color: rgba(0, 0, 0);
         display: flex;

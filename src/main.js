@@ -6,6 +6,7 @@ import Catalog from './components/Catalog.vue'
 import Stores from './components/Stores.vue'
 import Profile from './components/Profile.vue'
 import Authorization from './components/Authorization.vue'
+import Cart from './components/Cart.vue'
 import './main.css'
 
 const router = createRouter({
@@ -16,6 +17,8 @@ const router = createRouter({
     { path: '/stores', component: Stores },
     { path: '/profile', component: Profile },
     { path: '/authorization', component: Authorization },
+    { path: '/cart', component: Cart },
+
   ]
 })
 

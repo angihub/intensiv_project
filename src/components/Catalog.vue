@@ -92,9 +92,35 @@ const filteredProducts = computed(() => {
   });
 });
 
-function addToCart(product) {
-  console.log('Added to cart:', product);
+async function addToCart(product) {
+  const user = JSON.parse(localStorage.getItem("user") || "null");
+
+  if (user) {
+    await axios.post("http://localhost:5000/api/cart/add", {
+      user_id: user.id,
+      product_id: product.id,
+      quantity: 1
+    });
+    alert("Товар добавлен в корзину");
+  } else {
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    let item = cart.find(i => i.product_id === product.id);
+    if (item) {
+      item.quantity += 1;
+    } else {
+      cart.push({
+        product_id: product.id,
+        name: product.name,
+        price: product.price,
+        image_url: product.img,
+        quantity: 1
+      });
+    }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    alert("Товар добавлен в корзину (гостевая корзина)");
+  }
 }
+
 
 function goToProduct(id) {
   router.push(`/product/${id}`);
